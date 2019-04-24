@@ -17,6 +17,8 @@ class CreateLabTestsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('shortname');
+            $table->integer('module_id');
+            $table->foreign('module_id')->references('id')->on('modules');
             $table->timestamps();
         });
     }

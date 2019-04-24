@@ -26,4 +26,14 @@ class ModuleTest extends TestCase
             'number'=> 1027
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function it_can_have_many_lab_tests() {
+        $modules = factory('App\Module', 10)->create()->each(function($u){
+            $u->labtests()->save(factory('App\LabTest')->make());
+        });
+        $this->assertCount(10, $modules);
+    }
 }
