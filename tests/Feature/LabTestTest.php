@@ -17,9 +17,11 @@ class LabTestTest extends TestCase
      */
     public function it_should_have_a_name_and_short_name()
     {
+        $module = factory('App\Module')->create();
         $labtest = new LabTest();
         $labtest->name = 'Sodium';
         $labtest->shortname = 'NA';
+        $labtest->module_id = 1;
 
         $labtest->save();
 
@@ -27,5 +29,17 @@ class LabTestTest extends TestCase
             'name' => 'Sodium',
             'shortname' => 'NA'
         ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_belong_to_modules()
+    {   $module = factory('App\Module')->create();
+        $labtests = factory('App\LabTest', 10)->create(['module_id'=>$module->id]);
+        $first = $labtests->first();
+
+        $this->assertEquals($module->id, $first->module_id);
+
     }
 }
