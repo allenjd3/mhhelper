@@ -14,7 +14,7 @@ class LabTestController extends Controller
      */
     public function index()
     {
-        //
+        return LabTest::all();
     }
 
     /**
@@ -35,7 +35,12 @@ class LabTestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $test = LabTest::create($request->all());
+    
+        return response()->json([
+            'message'=>'created',
+        ], 201);
     }
 
     /**

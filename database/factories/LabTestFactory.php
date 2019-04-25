@@ -11,5 +11,6 @@ $factory->define(LabTest::class, function (Faker $faker) {
     return [
         'name' =>   $labTestFakerGenerator->getName(),
         'shortname' => $labTestFakerGenerator->getShortName(),
+        
     ];
 });
