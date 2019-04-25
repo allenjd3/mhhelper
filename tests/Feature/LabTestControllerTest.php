@@ -42,4 +42,16 @@ class LabTestControllerTest extends TestCase
 
        $response->assertStatus(201);
     }
+
+    /**
+     * @test
+     */
+    public function it_should_show_labtest_if_requested() {
+        $module = factory('App\Module')->create();
+        $labtest = factory('App\LabTest',10)->create(['module_id'=>$module->id]);
+        
+        $response = $this->json('GET', '/api/tests/' . $labtest->first()->id);
+        
+        $response->assertJson($labtest->first()->toArray());
+    }
 }

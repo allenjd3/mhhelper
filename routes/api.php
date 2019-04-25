@@ -15,3 +15,4 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/tests', 'LabTestController@index');
 Route::middleware('auth:api')->post('/tests', 'LabTestController@store');
+Route::middleware('auth:api')->get('/tests/{id}', 'LabTestController@show');

@@ -49,9 +49,10 @@ class LabTestController extends Controller
      * @param  \App\LabTest  $labTest
      * @return \Illuminate\Http\Response
      */
-    public function show(LabTest $labTest)
+    public function show($id)
     {
-        //
+        $test = LabTest::findOrFail($id);
+        return $test;
     }
 
     /**
